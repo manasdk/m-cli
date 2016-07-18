@@ -1,0 +1,33 @@
+#!/bin/sh
+
+
+help(){
+    cat<<__EOF__
+    usage: m spotify [ help ]
+
+    Examples:
+      m spotify pp    # playpause spotify
+      m spotify next  # play next song
+      m spotify prev  # play previosu song
+__EOF__
+}
+
+case $1 in
+    help)
+        help
+        ;;
+    pp)
+        osascript -e 'tell application "Spotify" to playpause';
+        ;;
+    next)
+        osascript -e 'tell application "Spotify" to next track';
+        ;;
+    prev)
+        osascript -e 'tell application "Spotify" to previous track';
+        ;;
+    *)
+        help 
+        ;;
+esac
+
+# vim: set ts=4 sw=4 softtabstop=4 expandtab
